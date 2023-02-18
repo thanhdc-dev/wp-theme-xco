@@ -1,0 +1,22 @@
+@font-face {
+	font-family: 'Montserrat';
+	src: url(../fonts/Montserrat-SemiBold.ttf);
+}
+@font-face {
+	font-family: 'Calibri';
+	src: url(../fonts/Uvf-calibri.ttf);
+	font-style: normal;
+	font-weight: 400;
+}
+@font-face {
+	font-family: 'Calibri';
+	src: url(../fonts/Uvf-calibrib.ttf);
+	font-style: normal;
+	font-weight: 700;
+}
+@font-face {
+	font-family: 'Calibri';
+	src: url(../fonts/Uvf-calibrii.ttf);
+	font-style: italic;
+	font-weight: 400;
+}
