@@ -49,6 +49,7 @@ add_action('carbon_fields_register_fields', function () {
         ))
         ->add_tab(__('Project'), array(
             Field::make('text', 'project_title', 'Title'),
+	        Field::make('image', 'project_background', 'Background'),
             Field::make('complex', 'project_items', 'Projects')
                 ->set_layout('tabbed-horizontal')
                 ->add_fields([

@@ -19,16 +19,18 @@
         </div>
     </div>
 </section>
-
+<?php
+$projectTitle = carbon_get_the_post_meta('project_title') ?? '';
+$projectBackgroundUrl = wp_get_attachment_image_url(carbon_get_the_post_meta('project_background') ?? 0);
+$projectItems = carbon_get_the_post_meta('project_items') ?? [];
+?>
 <section class="box box-risks box-project-feature"
-         style="background-image: url(<?php echo get_assets_path('images/project-featured.png') ?>)">
+         style="background-image: url('<?php echo $projectBackgroundUrl; ?>')">
     <div class="container">
         <h2 class="box-title text-center white wow fadeInUp  mb-35 animated">
-            <span><?php echo carbon_get_the_post_meta('project_title'); ?></span></h2>
+            <span><?php echo $projectTitle; ?></span></h2>
         <div class="box-content">
-            <?php $projectItems = carbon_get_the_post_meta('project_items') ?? []; ?>
-            <?php $i = 0;
-            foreach ($projectItems as $projectItem): ?>
+            <?php foreach ($projectItems as $i => $projectItem): ?>
                 <?php
                 $title = $projectItem['title'] ?? '';
                 $description = $projectItem['description'] ?? '';
@@ -71,7 +73,7 @@
                         </div>
                     </div>
                 <?php endif; ?>
-                <?php $i++; endforeach; ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
