@@ -127,11 +127,11 @@ $videoItemFirst = count($videoItems) ? $videoItems[0] : null;
                                 }
                                 <?php foreach ($videoItems as $index => $video): ?>
                                     <?php
-                                    $title = $video['title'] ?? '';
+                                    $title = "{$video['title']}";
                                     $youtubeId = $video['youtube_id'] ?? '';
                                     ?>
                                     window.td_youtube_list_ids['<?php echo "td_{$youtubeId}";?>'] = {
-                                        title: <?php echo $title; ?>,
+                                        title: "<?php echo $title; ?>",
                                         time: "00"
                                     };
                                 <?php endforeach; ?>
