@@ -81,6 +81,56 @@ add_action('carbon_fields_register_fields', function () {
                     Field::make('image', 'image', 'Avatar'),
                 ]),
         ));
+
+	// AboutUs page setting
+	Container::make('post_meta', __('AboutUs Setting'))
+		->where('post_type', '=', 'page')
+		->where('post_template', '=', 'about-us.php')
+		->add_tab(__('Introduce'), [
+			Field::make('text', 'about-us_introduce_title', 'Title'),
+			Field::make('rich_text', 'about-us_introduce_description', 'Description'),
+			Field::make('text', 'about-us_introduce_prize_title', 'Prize title'),
+			Field::make('complex', 'about-us_introduce_prizes', 'Prize')
+				->set_layout('tabbed-horizontal')
+				->add_fields([
+					Field::make('image', 'image', 'Image'),
+					Field::make('textarea', 'description', 'Description'),
+				]),
+		])
+		->add_tab(__('Service'), [
+			Field::make('text', 'about-us_service_title', 'Title'),
+			Field::make('text', 'about-us_service_caption', 'Caption'),
+			Field::make('rich_text', 'about-us_service_description', 'Description'),
+			Field::make('text', 'about-us_service_items_title', 'Item title'),
+			Field::make('complex', 'about-us_service_items', 'Item')
+			     ->set_layout('tabbed-horizontal')
+			     ->add_fields([
+				     Field::make('image', 'image', 'Image'),
+				     Field::make('text', 'name', 'Name'),
+				     Field::make('text', 'url', 'URL'),
+			     ]),
+			Field::make('image', 'about-us_service_image', 'Image'),
+			Field::make('image', 'about-us_service_logo', 'Logo'),
+		])
+		->add_tab(__('Stat'), [
+			Field::make('text', 'about-us_stat_title', 'Title'),
+			Field::make('image', 'about-us_stat_background', 'Background'),
+			Field::make('complex', 'about-us_stat_items', 'Item')
+			     ->set_layout('tabbed-horizontal')
+			     ->add_fields([
+				     Field::make('text', 'name', 'Name'),
+				     Field::make('text', 'number', 'Number'),
+			     ]),
+		])
+		->add_tab(__('Utility'), [
+			Field::make('text', 'about-us_utility_title', 'Title'),
+			Field::make('complex', 'about-us_utility_items', 'Item')
+			     ->set_layout('tabbed-horizontal')
+			     ->add_fields([
+				     Field::make('image', 'image', 'Image'),
+				     Field::make('textarea', 'description', 'Description'),
+			     ]),
+		]);
 });
 
 

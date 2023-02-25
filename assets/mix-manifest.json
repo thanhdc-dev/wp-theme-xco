@@ -1,5 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
-    "/js/home/home.js": "/js/home/home.js",
-    "/css/app.css": "/css/app.css"
+    "/js/home/owl.carousel.min.js": "/js/home/owl.carousel.min.js",
+    "/js/about-us/owl.carousel.min.js": "/js/about-us/owl.carousel.min.js",
+    "/css/app.css": "/css/app.css",
+    "/css/home/owl.carousel.min.css": "/css/home/owl.carousel.min.css",
+    "/css/home/owl.theme.default.min.css": "/css/home/owl.theme.default.min.css",
+    "/css/about-us/owl.carousel.min.css": "/css/about-us/owl.carousel.min.css",
+    "/css/about-us/owl.theme.default.min.css": "/css/about-us/owl.theme.default.min.css"
 }

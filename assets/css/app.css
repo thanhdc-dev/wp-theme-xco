@@ -2360,13 +2360,18 @@ video list player
 }
 
 .box-utility .box-img {
-  width: calc(100% - 80px);
+  margin: 0 auto 40px auto;
+  display: flex;
+  align-items: center;
+}
+.box-utility .box-img .img {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.5);
   box-shadow: 3px 4px 17px -10px rgba(0, 0, 0, 0.5);
   margin: 0 auto 40px auto;
   display: flex;
   align-items: center;
+  padding: 55px;
 }
 
 .box-utility .sort-order {

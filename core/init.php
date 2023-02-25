@@ -117,7 +117,7 @@ function dequeue_resource_not_unused(): void {
 	// Plugin Contact Form chỉ có ở template contact.php
 	$pageTemplateHasContactForm = [ 'contact' ];
 	$pageTemplate               = basename( get_page_template(), '.php' );
-	if ( in_array( $pageTemplate, $pageTemplateHasContactForm ) ) {
+	if ( ! in_array( $pageTemplate, $pageTemplateHasContactForm ) ) {
 		wp_dequeue_style( 'contact-form-7' );
 		wp_dequeue_script( 'contact-form-7' );
 	}
