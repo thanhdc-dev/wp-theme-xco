@@ -33,7 +33,7 @@ function loadStylesByFolderPath( string $folderPath, array $ends = [] ): void {
 		$fileName              = basename( $filePath );
 		$fileNameWithoutSuffix = basename( $filePath, $suffix );
 		$handle                = 'wp-style-' . str_replace( '.', '-', $fileNameWithoutSuffix );
-		wp_register_style( $handle, THEME_URL . '/' . $folderPath . '/' . $fileName );
+		wp_register_style( $handle, THEME_URL . '/' . $folderPath . '/' . $fileName, [], THEME_VER );
 		if ( in_array( $fileNameWithoutSuffix, $ends ) ) {
 			$handles[] = $handle;
 		} else {
@@ -80,7 +80,7 @@ function loadScriptsByFolderPath( string $folderPath, array $ends = [], array $d
 		$fileNameWithoutSuffix = basename( $filePath, $suffix );
 		$handle                = 'wp-script-' . str_replace( '.', '-', $fileNameWithoutSuffix );
 		$depends               = array_diff( $deps, [ $fileNameWithoutSuffix ] );
-		wp_register_script( $handle, THEME_URL . '/' . $folderPath . '/' . $fileName, $depends, false, true );
+		wp_register_script( $handle, THEME_URL . '/' . $folderPath . '/' . $fileName, $depends, THEME_VER, true );
 		if ( in_array( $fileNameWithoutSuffix, $ends ) ) {
 			$handles[] = $handle;
 		} else {
