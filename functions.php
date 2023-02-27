@@ -61,6 +61,78 @@ if ( ! function_exists( 'get_assets_path' ) ) {
 }
 
 /**
+ * Register Custom Post Type
+ */
+function register_service_post_type() {
+
+	$labels = array(
+		'name'                  => 'Services',
+		'singular_name'         => 'Service',
+		'menu_name'             => 'Services',
+		'name_admin_bar'        => 'Service',
+		'archives'              => 'Item Archives',
+		'attributes'            => 'Item Attributes',
+		'parent_item_colon'     => 'Parent Item:',
+		'all_items'             => 'All Items',
+		'add_new_item'          => 'Add New Item',
+		'add_new'               => 'Add New',
+		'new_item'              => 'New Item',
+		'edit_item'             => 'Edit Item',
+		'update_item'           => 'Update Item',
+		'view_item'             => 'View Item',
+		'view_items'            => 'View Items',
+		'search_items'          => 'Search Item',
+		'not_found'             => 'Not found',
+		'not_found_in_trash'    => 'Not found in Trash',
+		'featured_image'        => 'Featured Image',
+		'set_featured_image'    => 'Set featured image',
+		'remove_featured_image' => 'Remove featured image',
+		'use_featured_image'    => 'Use as featured image',
+		'insert_into_item'      => 'Insert into item',
+		'uploaded_to_this_item' => 'Uploaded to this item',
+		'items_list'            => 'Items list',
+		'items_list_navigation' => 'Items list navigation',
+		'filter_items_list'     => 'Filter items list',
+	);
+	$args   = array(
+		'label'               => 'Service',
+		'description'         => 'Service',
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'editor', 'thumbnail'),
+		'taxonomies'          => array(),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'menu_position'       => 5,
+		'menu_icon'           => 'dashicons-building',
+		'show_in_admin_bar'   => true,
+		'show_in_nav_menus'   => true,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => true,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'post',
+		'template' => array(
+			array( 'core/columns', array(), array(
+				array( 'core/column', array(), array(
+					array( 'core/image', array() ),
+				) ),
+				array( 'core/column', array(), array(
+					array( 'core/paragraph', array(
+						'placeholder' => 'Add a inner paragraph'
+					) ),
+				) ),
+			) )
+		),
+	);
+	register_post_type( 'service', $args );
+
+}
+
+add_action( 'init', 'register_service_post_type', 0 );
+
+/**
  * Hàm tạo phân trang
  */
 if ( ! function_exists( 'thanhdc_pagination' ) ) {

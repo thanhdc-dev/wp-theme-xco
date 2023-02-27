@@ -117,10 +117,19 @@ function dequeue_resource_not_unused(): void {
 	// Plugin Contact Form chỉ có ở template contact.php
 	$pageTemplateHasContactForm = [ 'contact' ];
 	$pageTemplate               = basename( get_page_template(), '.php' );
-	if ( ! in_array( $pageTemplate, $pageTemplateHasContactForm ) ) {
-		wp_dequeue_style( 'contact-form-7' );
+	if (!is_archive() && ! in_array( $pageTemplate, $pageTemplateHasContactForm ) ) {
 		wp_dequeue_script( 'contact-form-7' );
 	}
+	wp_dequeue_style( 'contact-form-7' );
 }
 
 add_action( 'wp_enqueue_scripts', 'dequeue_resource_not_unused' );
+
+/**
+ * Xóa thẻ <br /> mặc định của Contact Form dưới mỗi input
+ */
+add_filter('wpcf7_form_elements', function($content) {
+	$content = str_replace('<br />', '', $content);
+
+	return $content;
+});

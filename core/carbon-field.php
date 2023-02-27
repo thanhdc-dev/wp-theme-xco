@@ -131,6 +131,19 @@ add_action('carbon_fields_register_fields', function () {
 				     Field::make('textarea', 'description', 'Description'),
 			     ]),
 		]);
+
+	// Archive service page setting
+	Container::make('post_meta', __('Service Setting'))
+         ->where('post_type', '=', 'service')
+         ->add_tab(__('Implementation process'), [
+	         Field::make('text', 'service_implementation_process_title', 'Title')->set_default_value( 'QUY TRÌNH TRIỂN KHAI' ),
+	         Field::make('rich_text', 'service_implementation_process_description', 'Description'),
+	         Field::make('image', 'service_implementation_process_background', 'Background'),
+         ])
+         ->add_tab(__('Attention'), [
+			Field::make('text', 'service_attention_title', 'Title')->set_default_value( 'LƯU Ý DỊCH VỤ' ),
+			Field::make('rich_text', 'service_attention_description', 'Description'),
+		]);
 });
 
 
