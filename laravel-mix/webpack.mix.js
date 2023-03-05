@@ -8,6 +8,8 @@ mix.setPublicPath(`${DIST_DIR}`);
 const cssPluginOwl = ['./css/plugins/owl.carousel.min.css', './css/plugins/owl.theme.default.min.css'];
 mix.copy([...cssPluginOwl], `${DIST_DIR}/css/home`)
     .copy([...cssPluginOwl], `${DIST_DIR}/css/about-us`)
+    .copy([...cssPluginOwl, './css/plugins/fancybox.min.css'], `${DIST_DIR}/css/construction`)
+    .copy([...cssPluginOwl], `${DIST_DIR}/css/archive`)
     .sass('./scss/app.scss', 'css', {
         sourceMap: true
     })
@@ -20,6 +22,12 @@ mix.copy([...cssPluginOwl], `${DIST_DIR}/css/home`)
         './js/plugins/owl.carousel.min.js',
         './js/about-us.js',
     ], `js/about-us`)
+    .js([
+        './js/plugins/owl.carousel.min.js',
+        './js/plugins/fancybox.min.js',
+        './js/construction.js',
+    ], `js/construction`)
+    .js(['./js/archive.js'], 'js/archive')
     .setPublicPath(`${DIST_DIR}`);
 
 mix.browserSync({

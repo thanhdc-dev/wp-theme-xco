@@ -144,6 +144,25 @@ add_action('carbon_fields_register_fields', function () {
 			Field::make('text', 'service_attention_title', 'Title')->set_default_value( 'LƯU Ý DỊCH VỤ' ),
 			Field::make('rich_text', 'service_attention_description', 'Description'),
 		]);
+
+	// Archive service page setting
+	Container::make('post_meta', __('Construction Setting'))
+         ->where('post_type', '=', 'construction')
+         ->add_tab(__('Introduce'), [
+	         Field::make('text', 'construction_sort_order', 'Sort order')->set_default_value(1),
+	         Field::make('text', 'construction_address', 'Address'),
+         ])
+		 ->add_tab(__('Slides'), [
+			 Field::make('complex', 'construction_slides', 'Items')
+			     ->set_layout('tabbed-horizontal')
+			     ->add_fields([
+				     Field::make('image', 'image', 'Image')->set_required( ),
+			     ]),
+		 ])
+         ->add_tab(__('Space Description'), [
+	         Field::make('text', 'construction_space_description_title', 'Title')->set_default_value('THUYẾT MINH THIẾT KẾ'),
+	         Field::make('rich_text', 'construction_space_description_description', 'Description'),
+         ]);
 });
 
 

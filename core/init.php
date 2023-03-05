@@ -55,7 +55,8 @@ function theme_enqueue_styles(): void {
 	foreach ( glob( THEME_DIR . '/assets/css/*', GLOB_ONLYDIR ) as $folderPath ) {
 		$folderName   = basename( $folderPath );
 		$pageTemplate = basename( get_page_template(), '.php' );
-		if ( $pageTemplate == $folderName ) {
+		$isArchive = $folderName == 'archive' && is_archive();
+		if ( $pageTemplate == $folderName || is_singular($folderName) || $isArchive ) {
 			loadStylesByFolderPath( 'assets/css/' . $folderName, [ $folderName ] );
 		}
 	}
@@ -102,7 +103,8 @@ function theme_enqueue_scripts(): void {
 	foreach ( glob( THEME_DIR . '/assets/js/*', GLOB_ONLYDIR ) as $folderPath ) {
 		$folderName   = basename( $folderPath );
 		$pageTemplate = basename( get_page_template(), '.php' );
-		if ( $pageTemplate == $folderName ) {
+		$isArchive = $folderName == 'archive' && is_archive();
+		if ( $pageTemplate == $folderName || is_singular($folderName) || $isArchive ) {
 			loadScriptsByFolderPath( 'assets/js/' . $folderName, [ $folderName ] );
 		}
 	}
