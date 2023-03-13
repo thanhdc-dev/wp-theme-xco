@@ -9,22 +9,27 @@
         <h1 class="heading-title hidden"><?php single_cat_title(); ?></h1>
         <h2 class="box-heading mb-40 text-center wow fadeInUp animated"><span><?php single_cat_title(); ?></span></h2>
 		<?php
-		// WP_Query arguments
 		$args = [
-			'post_type'      => [ 'construction' ],
+			'post_type'      => 'construction',
 			'posts_per_page' => 9,
-			'category_name'  => get_queried_object()->slug,
 			'order'          => 'ASC',
+			'tax_query'      => [
+				[
+					'taxonomy' => 'construction-types',
+					'field'    => 'slug',
+					'terms'    => get_queried_object()->slug,
+				],
+			],
 		];
 
 		// The Query
-		$wp_query = new WP_Query( $args );
+		$query = new WP_Query( $args );
 		?>
         <div class="fluid">
             <div class="box-space-wrap hidden-xs">
                 <div class="row">
-					<?php if ( have_posts() ) : ?>
-						<?php while ( have_posts() ) : the_post(); ?>
+					<?php if ( $query->have_posts() ) : ?>
+						<?php while ( $query->have_posts() ) : $query->the_post(); ?>
                             <div class="col-xs-12 col-sm-4">
                                 <div class="space-item wow fadeInUp animated">
                                     <div class="img">
