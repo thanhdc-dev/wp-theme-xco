@@ -163,6 +163,19 @@ add_action('carbon_fields_register_fields', function () {
 	         Field::make('text', 'construction_space_description_title', 'Title')->set_default_value('THUYẾT MINH THIẾT KẾ'),
 	         Field::make('rich_text', 'construction_space_description_description', 'Description'),
          ]);
+
+	// Contact page setting
+	Container::make('post_meta', __('Contact Setting'))
+		->where('post_type', '=', 'page')
+		->where('post_template', '=', 'contact.php')
+		->add_fields([
+			Field::make('text', 'contact_title', 'Title'),
+			Field::make('text', 'contact_phone', 'Address'),
+			Field::make('text', 'contact_address', 'Address'),
+			Field::make('text', 'contact_email', 'Email'),
+			Field::make('image', 'contact_background', 'Background'),
+		]);
+
 });
 
 
